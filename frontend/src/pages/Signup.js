@@ -14,7 +14,7 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", user);
+      await axios.post("https://buy-buddy-backend-ege6.onrender.com/api/auth/register", user);
       toast.success("Signup successful! Please login.",{
           style: {
             background: "#0f172a", // dark navy

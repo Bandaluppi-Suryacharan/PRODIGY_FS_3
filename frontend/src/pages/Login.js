@@ -17,7 +17,7 @@ export default function Login({ setIsLoggedIn }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", user);
+      const res = await axios.post("https://buy-buddy-backend-ege6.onrender.com/api/auth/login", user);
       if (res.status === 200 && res.data.token) {
       localStorage.setItem("token", res.data.token);
       setIsLoggedIn(true); // update nav

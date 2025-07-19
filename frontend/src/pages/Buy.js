@@ -52,7 +52,7 @@ export default function Buy() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/order",
+        "https://buy-buddy-backend-ege6.onrender.com/api/order",
         { address },
         {
           headers: {
