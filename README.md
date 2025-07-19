@@ -1,111 +1,79 @@
-# 🛒 Local Store – E-commerce Platform  
+# 🛒 BuyBuddy – MERN Stack eCommerce Website
 
-Welcome to **Local Store** – a clean, simple, and user-friendly local e-commerce web app where shopping meets convenience! Built as part of my internship with **Prodigy InfoTech**, this platform makes it super easy to browse products, manage your cart, checkout with a smile, and track orders in real time.  
-
----
-
-## 🎬 Demo Video  
-
-Check out the working demo of this project in action      
-[![Watch Demo](https://img.youtube.com/vi/NP435pW361M/0.jpg)](https://youtu.be/NP435pW361M)  
-
-📺 [Click here to watch on YouTube »](https://youtu.be/NP435pW361M)  
+**BuyBuddy** is a full-stack eCommerce web application built using the **MERN** (MongoDB, Express.js, React, Node.js) stack. It allows users to browse products, register or log in, add items to a cart, and simulate a purchase — all secured with JWT-based authentication.
 
 ---
 
-## 💡 Features  
+## 🚀 Features
 
-✨ Simple and modern frontend    
-✨ Add to cart & remove with ease   
-✨ Seamless checkout with address + payment    
-✨ Cash on Delivery support    
-✨ Track your order status:    
- • Ready to Place    
- • On the Way  
- • Delivered    
-✨ Fully connected to a backend with MongoDB    
-✨ Mobile-friendly and lightweight design  
+### 👤 Authentication
+- User Signup & Login using **JWT tokens**
+- Secure routes protected via middleware
+- Conditional UI rendering based on login status
+- Persistent session using token in `localStorage`
 
----
-# **📁 Folder Structure**
-PRODIGY_FS_03/  
-├── backend/  
-│   ├── models/  
-│   │   └── producttemp.js  
-│   ├── routes/  
-│   │   └── productRoutes.js  
-│   ├── seed.js  
-│   ├── products.json  
-│   ├── server.js  
-│   ├── .env  
-│   ├── .gitignore  
-│   ├── package.json  
-│   └── package-lock.json  
-├── frontend/  
-│   ├── public/  
-│   │   └── index.html  
-│   ├── src/  
-│   │   ├── components/  
-│   │   │   └── productCard.js  
-│   │   ├── pages/  
-│   │   │   ├── Home.js  
-│   │   │   ├── Cart.js  
-│   │   │   └── Buy.js  
-│   │   ├── App.js  
-│   │   ├── index.js  
-│   │   └── index.css  
-│   ├── assets/  
-│   ├── .env  
-│   ├── .gitignore  
-│   ├── postcss.config.js  
-│   ├── tailwind.config.js  
-│   ├── package.json  
-│   └── package-lock.json  
-├── node_modules/  
-├── .gitignore  
-└── README.md    
+### 🛍️ Product Management
+- Product listing fetched from MongoDB backend
+- Users can browse available items
+- Product details include image, price, and description
 
-## 🔧 Tech Stack  
+### 🛒 Cart Functionality
+- Add to cart with quantity tracking
+- Cart stored uniquely per user in localStorage (`cart_<userId>`)
+- Remove items or buy items
+- Total price calculated and shown before purchase
 
-- **Frontend**: HTML, CSS, JavaScript  
-- **Backend**: Node.js, Express.js  
-- **Database**: MongoDB  
-- **Styling**: TailwindCSS & custom CSS  
-- **Platform**: GitHub + Heroku (or local development)  
+### 💸 Purchase Flow
+- Once “Buy” is clicked, order details are stored
+- Feedback given via `react-toastify` toasts (instead of basic alerts)
+- Cart gets cleared after a successful order
 
 ---
 
-## 🚀 How to Run Locally  
+## 🔐 Tech Stack
 
-### 1. Clone this Repo  
-git clone [CLICK HERE](https://github.com/Saurabh9122-tech/PRODIGY_FS_03.git)    
-cd PRODIGY_FS_03  
-### **2. Install Backend Dependencies**        
-cd backend  
-npm install  
-### **3. Start the Server**     
-node server.js  
-### **4. Open Frontend**   
- Open public/index.html in your browser      
-(Or run using VS Code Live Server or any local server)   
+### Frontend
+- React.js
+- Tailwind CSS
+- React Router DOM
+- React Toastify
+- Axios
 
-# **📸 Screenshots**  
-### **HOME PAGE**  
-![Screenshot 2025-06-29 124617.png](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/Screenshot%202025-06-29%20124617.png)   
-### **CART**  
-![](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/Screenshot%202025-06-29%20124649.png)
-### **ADDRESS **  
-![](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/Screenshot%202025-06-29%20124723.png)  
-### **PAYMENT METHOD**  
-![](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/Screenshot%202025-06-29%20124733.png)
-### **TRACKING**  
-![](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/Screenshot%202025-06-29%20124743.png)  
+### Backend
+- Node.js
+- Express.js
+- MongoDB (via Mongoose)
+- JWT (jsonwebtoken)
+
 ---
-# **🙋‍♂️ About Me**
-Hi! I’m Saurabh Kumar, a web developer intern at Prodigy InfoTech.
-This project is part of my learning journey — building real-world solutions one step at a time.
 
-### **🔗 LinkedIn**
-  [saurabh kumar](www.linkedin.com/in/saurabh-kumar-9999s)   
-# **🔒 License**
-[MIT](https://github.com/Saurabh9122-tech/PRODIGY_FS_03/blob/main/LICENSE)
+
+## 🔄 Workflow
+
+1. **User Registration/Login**
+   - Credentials are sent to backend
+   - JWT token is returned and stored in `localStorage`
+
+2. **Authenticated Session**
+   - Navbar dynamically changes (Login → Logout)
+   - Routes get access to the token for secured access
+
+3. **Product Interaction**
+   - Products loaded from backend
+   - Clicking "Add to Cart" stores data under `cart_<userId>`
+
+4. **Cart Actions**
+   - View all items in cart
+   - Remove individual items
+   - Click "Buy" → Order confirmed → Cart cleared
+
+5. **Toasts Instead of Alerts**
+   - Friendly UI notifications powered by `react-toastify`
+   - Custom background and themes can be applied
+
+---
+🔒 Environment Variables
+Create a .env in your backend/ folder:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
