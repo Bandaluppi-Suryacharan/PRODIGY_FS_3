@@ -1,90 +1,79 @@
-🛒 BuyBuddy – MERN Stack eCommerce Website
-BuyBuddy is a full-stack eCommerce web application built using the MERN (MongoDB, Express.js, React, Node.js) stack. It allows users to browse products, register or log in, add items to a cart, and simulate a purchase — all secured with JWT-based authentication.
+# 🛒 BuyBuddy – MERN Stack eCommerce Website
 
-🚀 Features
-👤 Authentication
-User Signup & Login using JWT tokens
+**BuyBuddy** is a full-stack eCommerce web application built using the **MERN** (MongoDB, Express.js, React, Node.js) stack. It allows users to browse products, register or log in, add items to a cart, and simulate a purchase — all secured with JWT-based authentication.
 
-Secure routes protected via middleware
+---
 
-Conditional UI rendering based on login status
+## 🚀 Features
 
-Persistent session using token in localStorage
+### 👤 Authentication
+- User Signup & Login using **JWT tokens**
+- Secure routes protected via middleware
+- Conditional UI rendering based on login status
+- Persistent session using token in `localStorage`
 
-🛍️ Product Management
-Product listing fetched from MongoDB backend
+### 🛍️ Product Management
+- Product listing fetched from MongoDB backend
+- Users can browse available items
+- Product details include image, price, and description
 
-Users can browse available items
+### 🛒 Cart Functionality
+- Add to cart with quantity tracking
+- Cart stored uniquely per user in localStorage (`cart_<userId>`)
+- Remove items or buy items
+- Total price calculated and shown before purchase
 
-Product details include image, price, and description
+### 💸 Purchase Flow
+- Once “Buy” is clicked, order details are stored
+- Feedback given via `react-toastify` toasts (instead of basic alerts)
+- Cart gets cleared after a successful order
 
-🛒 Cart Functionality
-Add to cart with quantity tracking
+---
 
-Cart stored uniquely per user in localStorage (cart_<userId>)
+## 🔐 Tech Stack
 
-Remove items or buy items
+### Frontend
+- React.js
+- Tailwind CSS
+- React Router DOM
+- React Toastify
+- Axios
 
-Total price calculated and shown before purchase
+### Backend
+- Node.js
+- Express.js
+- MongoDB (via Mongoose)
+- JWT (jsonwebtoken)
 
-💸 Purchase Flow
-Once “Buy” is clicked, order details are stored
+---
 
-Feedback given via react-toastify toasts (instead of basic alerts)
 
-Cart gets cleared after a successful order
+## 🔄 Workflow
 
-🔐 Tech Stack
-Frontend
-React.js
+1. **User Registration/Login**
+   - Credentials are sent to backend
+   - JWT token is returned and stored in `localStorage`
 
-Tailwind CSS
+2. **Authenticated Session**
+   - Navbar dynamically changes (Login → Logout)
+   - Routes get access to the token for secured access
 
-React Router DOM
+3. **Product Interaction**
+   - Products loaded from backend
+   - Clicking "Add to Cart" stores data under `cart_<userId>`
 
-React Toastify
+4. **Cart Actions**
+   - View all items in cart
+   - Remove individual items
+   - Click "Buy" → Order confirmed → Cart cleared
 
-Axios
+5. **Toasts Instead of Alerts**
+   - Friendly UI notifications powered by `react-toastify`
+   - Custom background and themes can be applied
 
-Backend
-Node.js
-
-Express.js
-
-MongoDB (via Mongoose)
-
-JWT (jsonwebtoken)
-
-🔄 Workflow
-User Registration/Login
-
-Credentials are sent to backend
-
-JWT token is returned and stored in localStorage
-
-Authenticated Session
-
-Navbar dynamically changes (Login → Logout)
-
-Routes get access to the token for secured access
-
-Product Interaction
-
-Products loaded from backend
-
-Clicking "Add to Cart" stores data under cart_<userId>
-
-Cart Actions
-
-View all items in cart
-
-Remove individual items
-
-Click "Buy" → Order confirmed → Cart cleared
-
-Toasts Instead of Alerts
-
-Friendly UI notifications powered by react-toastify
-
-Custom background and themes can be applied
-
+---
+🔒 Environment Variables
+Create a .env in your backend/ folder:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
